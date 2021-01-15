@@ -1,0 +1,14 @@
+FROM node:erbium-alpine as builder
+
+WORKDIR /usr/src/app
+
+COPY package.json .
+
+RUN npm i
+
+COPY . . 
+
+RUN npm build
+
+FROM nginx
+COPY --from=builder /usr/src/app/build /usr/share/nginx/html
