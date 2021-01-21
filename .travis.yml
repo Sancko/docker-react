@@ -1,4 +1,3 @@
-# sudo: required
 service: 
   - docker
 
@@ -6,6 +5,4 @@ before_install:
   - docker build -t pohonets/docker-react -f Dockerfile.dev .
 
 script:
-  - docker run pohonets/docker-react npm run test -- --coverage
-
-   # -e CI=true
+  - docker run -e CI=true pohonets/docker-react npm run test -- --coverage
