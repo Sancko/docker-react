@@ -1,4 +1,4 @@
-FROM node:erbium-alpine as builder
+FROM node:erbium-alpine
 
 WORKDIR /usr/src/app
 
@@ -12,4 +12,4 @@ RUN npm build
 
 FROM nginx
 EXPOSE 80
-COPY --from=builder /usr/src/app/build /usr/share/nginx/html
+COPY --from=0 /usr/src/app/build /usr/share/nginx/html
