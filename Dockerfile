@@ -2,7 +2,7 @@ FROM node:erbium-alpine as builder
 
 WORKDIR /usr/src/app
 
-COPY package.json .
+COPY package.json ./
 
 RUN npm i
 
