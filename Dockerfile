@@ -1,10 +1,10 @@
 FROM node:erbium-alpine
 
-WORKDIR /usr/src/app
+WORKDIR /usr/app
 
 COPY package.json ./
 
-RUN npm i
+RUN npm install
 
 COPY . . 
 
@@ -12,4 +12,4 @@ RUN npm build
 
 FROM nginx
 EXPOSE 80
-COPY --from=0 /usr/src/app/build /usr/share/nginx/html
+COPY --from=0 /usr/app/build /usr/share/nginx/html
