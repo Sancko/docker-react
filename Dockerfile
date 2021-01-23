@@ -1,4 +1,4 @@
-FROM node:alpine AS build_intermidiate
+FROM node:alpine
 
 WORKDIR '/app'
 
@@ -6,11 +6,12 @@ COPY package.json ./
 
 RUN npm install
 
-COPY . . 
+COPY . ./ 
 
 RUN npm build --prod
 
 FROM nginx:alpine
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
-COPY --from=build_intermidiate ./app/build /usr/share/nginx/html
+COPY --from=0 ./app/build ./usr/share/nginx/html
 
