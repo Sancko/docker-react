@@ -12,9 +12,9 @@ deploy:
   access_key_id:  $AWS_ACCESS_KEY
   secret_access_key: "$AWS_SECRET_KEY"
   region: "us-east-2"
-  app: "docker-react"
-  env: "DockerReact-env"
+  app: "docker"
+  env: "Docker-env"
   backet_name: "elasticbeanstalk-us-east-2-063512309485"
-  backet_path: "docker-react"
+  backet_path: "docker"
   on:
     branck: master
