@@ -12,5 +12,5 @@ RUN npm build --prod
 
 FROM nginx:alpine
 EXPOSE 80
-COPY --from=build_intermidiate app/build /usr/share/nginx/html
+COPY --from=build_intermidiate ./app/build /usr/share/nginx/html
 
