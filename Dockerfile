@@ -1,6 +1,6 @@
 FROM node:alpine
 
-WORKDIR /usr/src/app
+WORKDIR '/app'
 
 COPY package.json ./
 
@@ -11,6 +11,6 @@ COPY . .
 RUN npm build
 
 FROM nginx
-
-COPY --from=0 usr/src/app/build usr/share/nginx/html
 EXPOSE 80
+COPY --from=0 /app/build /usr/share/nginx/html
+
